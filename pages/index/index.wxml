@@ -1,0 +1,45 @@
+<view class="main-container">
+
+	
+	<view class="search-bar">
+		<image class="logo" src="/img/logo.png"></image>
+		<navigator url="/pages/search/search">
+			<view class="bar">
+				<image class="search" src="/img/icon/search.png"></image>
+				<view class="placeholder">公司/机构/人名/行业/地域</view>
+			</view>
+		</navigator>
+	</view>
+
+	<scroll-view class="scroll-view" scroll-y="true" bindscrolltolower="lower">
+
+		<view class="service-box">
+            <view class="item {{item.class}}" wx:for-items="{{grids}}" wx:key="{{index}}">
+            	<navigator url="{{item.url}}">
+					<image class="icon" src="{{item.icon}}"></image>
+                    <view class="name">{{item.name}}</view>
+            	</navigator>
+            </view>
+        </view>
+
+        <view class="result-list block" wx:for="{{data}}" wx:for-index="index" wx:for-item="block">
+			
+			<view class="block-t">{{block.name}}</view>
+
+			<!-- 投资事件 -->
+			<view class="content" wx:if="{{index == 0}}">
+				<import src="/tpl/event.wxml"/>
+				<template is="event" data="{{data:block.data}}"/>
+			</view>  
+			<!-- 创业公司 -->
+			<view class="content" wx:if="{{index == 1}}">
+				<import src="/tpl/company.wxml"/>
+				<template is="company" data="{{data:block.data}}"/>
+			</view>	
+
+			<navigator class="more" url="{{index == 1 ? '/pages/company/company' : '/pages/event/event'}}">查看更多</navigator>
+        </view>
+
+
+    </scroll-view>
+</view>

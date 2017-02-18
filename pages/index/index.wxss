@@ -1,0 +1,76 @@
+.service-box{
+	display:flex;
+	background:#fff;
+	padding:20rpx;
+	font-size:8pt;
+	text-align:center;
+	align-items:center;
+}
+.service-box .item{
+	width:115rpx;
+	padding:15rpx 5rpx;
+	margin:5rpx 10rpx;
+	border-radius:3px;
+}
+.service-box .item.event{
+	color:#f60;
+}
+.service-box .item.vcompany{
+	color:#fc0;
+}
+.service-box .item.company{
+	color:#43b6ff;
+}
+.service-box .item.people{
+	color:#a970ff;
+}
+.service-box .item.vpeople{
+	color:#34d8d7;
+}
+.service-box .item.disabled{
+	background-color:#fafafa;
+	border-color:#fafafa;
+	color:#aaa;
+}
+.service-box .item .icon{
+	width: 110rpx;
+	height: 110rpx;
+}
+.search-bar .logo{
+	display:block;
+	width: 28vw;
+	height: 14vw;
+	margin:50rpx auto 80rpx;
+}
+
+.text-right{
+	text-align: right;
+}
+
+.block{
+	background:#fff;
+	margin-top:10px;
+}
+.block-t{
+	color:#333;
+	font-size: 12pt;
+	padding: 30rpx 30rpx 10rpx;
+}
+
+.result-list{
+	position:relative;
+	padding-bottom:20rpx;
+}
+.result-list .more{
+	font-size:11pt;
+	text-align:center;
+	color:#fff;
+	height: 40px;
+	line-height: 40px;
+	border-radius:5px;
+	margin:10rpx 30rpx 10rpx;
+	background:#f60;
+}
+
+
+

@@ -1,0 +1,46 @@
+.block{
+	background:#fff;
+	margin-top:10px;
+	overflow:hidden;
+}
+.block-t{
+	color:#333;
+	font-size: 12pt;
+	font-weight:bold;
+	padding: 30rpx 30rpx 10rpx;
+}
+
+.company-item{
+	margin:0;
+	padding:30rpx;
+}
+.company-item .box{
+	width:520rpx;
+}
+
+.block-desc{
+	background:#fff;
+	margin-top:10px;
+}
+
+.block-desc .content{
+	font-size:12pt;
+	color:#666;
+	padding:10rpx 30rpx 30rpx;
+	text-align:justify;
+}
+.block-desc .content .wxParse-p{
+	margin-bottom: 40rpx;
+}
+
+
+.block-partners .weui-cell__bd{
+	font-size:11pt;
+	overflow:hidden;
+	color:#333;
+	font-weight:bold;
+}
+.block-partners .weui-cell__ft{
+	font-size:10pt;
+	max-width:70%;
+}

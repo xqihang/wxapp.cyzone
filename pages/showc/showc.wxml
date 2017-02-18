@@ -1,0 +1,99 @@
+<view class="main-container">
+
+	<scroll-view class="scroll-view">
+		<view class="company-item">
+			<view class="thumb">
+				<image mode="aspectFit" src="{{data.thumb}}"></image>
+			</view>
+			<view class="box">
+				<view class="title">{{data.title}}</view>
+				<view class="line">{{data.industryid}}</view>
+				<view class="line">
+					<view class="city">
+						<image class="icon" src="/img/icon/address.png"></image>
+						{{data.chinahead}}
+					</view>
+					<view class="team">
+						<image class="icon" src="/img/icon/people.png"></image>
+						{{data.companysize}}
+					</view>
+				</view>
+				<view class="stage">{{data.stage}}</view>
+			</view>
+		</view>
+
+        <view class="block block-desc" wx:if="{{data.content}}">
+            <view class="block-t">简介</view>
+            <view class="content">
+                <import src="/wxParse/wxParse.wxml"/>
+                <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+            </view>
+        </view>
+
+		<view class="block block-partners" wx:if="{{data.qcc}}">
+			
+			<view class="weui-cells__title">工商信息</view>
+
+            <view class="weui-cell">
+                <view class="weui-cell__bd">注册号</view>
+                <view class="weui-cell__ft">{{data.qcc.No || '未知'}}</view>
+            </view>
+
+            <view class="weui-cell">
+                <view class="weui-cell__bd">经营状态</view>
+                <view class="weui-cell__ft">{{data.qcc.Status || '暂无'}}</view>
+            </view>
+
+            <view class="weui-cell">
+                <view class="weui-cell__bd">法定代表</view>
+                <view class="weui-cell__ft">{{data.qcc.OperName || '暂无'}}</view>
+            </view>
+
+            <view class="weui-cell">
+                <view class="weui-cell__bd">公司类型</view>
+                <view class="weui-cell__ft">{{data.qcc.EconKind || '暂无'}}</view>
+            </view>
+
+            <view class="weui-cell">
+                <view class="weui-cell__bd">成立日期</view>
+                <view class="weui-cell__ft">{{data.qcc.StartDate || '暂无'}}</view>
+            </view>
+
+            <view class="weui-cell">
+                <view class="weui-cell__bd">注册资本</view>
+                <view class="weui-cell__ft">{{data.qcc.RegistCapi || '暂无'}}</view>
+            </view>
+
+            <view class="weui-cell">
+                <view class="weui-cell__bd">住所</view>
+                <view class="weui-cell__ft">{{data.qcc.Address || '暂无'}}</view>
+            </view>
+
+        </view>
+
+		<view class="block block-partners weui-cells" wx:if="{{data.qcc.Partners}}">
+			<view class="weui-cells__title">股东</view>
+            <view class="weui-cell" wx:for="{{data.qcc.Partners}}">
+                <view class="weui-cell__bd">{{item.StockType}}</view>
+                <view class="weui-cell__ft">{{item.StockName}}</view>
+            </view>
+        </view>
+
+        <view class="block" wx:if="{{data.financing.length}}">
+        	<view class="block-t">融资经历</view>
+        	<import src="/tpl/rongzi.wxml"/>
+			<template is="rongzi" data="{{data:data.financing}}"/>
+        </view>
+
+        <view class="block" wx:if="{{data.similar.length}}">
+        	<view class="block-t">相似公司</view>
+        	<import src="/tpl/company.wxml"/>
+			<template is="company" data="{{data:data.similar}}"/>
+        </view>
+
+        <view class="copy-right">
+            <view>数据来源于：创业邦 - 创投库</view>   
+            <view>http://www.cyzone.cn</view> 
+        </view>
+    </scroll-view>
+</view>

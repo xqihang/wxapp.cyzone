@@ -1,0 +1,30 @@
+<view class="main-container">
+
+	<scroll-view class="scroll-view">
+		<view class="company-item">
+			<view class="thumb">
+				<image mode="aspectFit" src="{{data.thumb}}"></image>
+			</view>
+			<view class="box">
+				<view class="title" wx:if="{{data.title}}">{{data.title}}</view>
+                <view class="line" wx:if="{{data.company}}">公司名称：{{data.company}}</view>
+                <view class="line" wx:if="{{data.position}}">职位：{{data.position}}</view>
+				<view class="line" wx:if="{{data.industryid}}">领域：{{data.industryid}}</view>
+				<view class="stage" wx:if="{{data.stage}}">{{data.stage}}</view>
+			</view>
+		</view>
+
+        <view class="block block-desc" wx:if="{{data.content}}">
+            <view class="block-t">简介</view>
+            <view class="content">
+                <import src="/wxParse/wxParse.wxml"/>
+                <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+            </view>
+        </view>
+
+        <view class="copy-right">
+            <view>数据来源于：创业邦 - 创投库</view>   
+            <view>http://www.cyzone.cn</view> 
+        </view>
+    </scroll-view>
+</view>

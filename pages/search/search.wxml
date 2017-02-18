@@ -1,0 +1,105 @@
+<view class="main-container">
+
+	<view class="weui-search-bar">
+        <view class="weui-search-bar__form">
+            <view class="weui-search-bar__box">
+                <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                <input type="text" auto-focus="{{focus}}" class="weui-search-bar__input" placeholder="公司/机构/人名/行业/地域" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" bindconfirm="search" />
+            </view>
+            <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                <icon class="weui-icon-search" type="search" size="14"></icon>
+                <view class="weui-search-bar__text">公司/机构/人名/行业/地域</view>
+            </label>
+        </view>
+        <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="search">搜索</view>
+    </view>
+
+	<scroll-view class="scroll-view has-search {{!data.length && !currentModel?'no-result':''}}" scroll-y="true" bindscrolltolower="lower">
+
+		<view class="service-box block" wx:if="{{data.length || currentModel}}">
+            <view class="item {{item.name}} {{currentModel == item.modelid? 'current':''}}" wx:for="{{count}}" data-mid="{{item.modelid}}" catchtap="searchtype">
+				<image class="icon" src="/img/icon/{{item.class}}.png" data-mid="{{item.modelid}}" catchtap="searchtype"></image>
+				<view class="name" data-mid="{{item.modelid}}" catchtap="searchtype">{{item.cn}}</view>
+                <view class="name" data-mid="{{item.modelid}}" catchtap="searchtype">{{item.number}} {{index>1?'位':'家'}}</view>
+            </view>
+        </view>
+		<view class="result-list white-bg block" wx:if="{{data.length || currentModel}}">
+
+			<view class="content">
+
+				<view class="company-item" wx:for="{{data}}" wx:for-index="idx" wx:for-item="item" wx:if="{{item.modelid==18 && currentModel==18}}">
+					<navigator url="/pages/showc/showc?id={{item.id}}">
+						<view class="thumb">
+							<image mode="aspectFit" src="{{item.thumb}}"></image>
+						</view>
+						<view class="box">
+							<view class="title" wx:if="{{item.title}}">{{item.title}}</view>
+							<view class="line" wx:if="{{item.industryid}}">{{item.industryid}}</view>
+							<view class="line">
+								<view class="city" wx:if="{{item.chinahead}}">
+									<image class="icon" src="/img/icon/address.png"></image>
+									{{item.chinahead}}
+								</view>
+								<view class="team" wx:if="{{item.companysize}}">
+									<image class="icon" src="/img/icon/user.png"></image>
+									{{item.companysize}}
+								</view>
+							</view>
+							<view class="stage" wx:if="{{item.stage}}">{{item.stage}}</view>
+						</view>
+					</navigator>
+				</view>
+
+				<view class="company-item" wx:for="{{data}}" wx:for-index="idx" wx:for-item="item" wx:if="{{item.modelid==4 && currentModel==4}}">
+					<navigator url="/pages/showcapital/showcapital?id={{item.id}}">
+						<view class="thumb">
+							<image mode="aspectFit" src="{{item.thumb}}"></image>
+						</view>
+						<view class="box">
+							<view class="title" wx:if="{{item.title}}">{{item.title}}</view>
+							<view class="line" wx:if="{{item.website}}">官网：{{item.website}}</view>
+							<view class="line" wx:if="{{item.investment}}">投资领域：{{item.investment}}</view>
+						</view>
+					</navigator>
+				</view>
+
+				<view class="vpeople-item" wx:for="{{data}}" wx:for-index="idx" wx:for-item="item" wx:if="{{item.modelid == 6 && currentModel==6}}">
+					<navigator url="/pages/show_p/show_p?id={{item.id}}">
+						<view class="thumb">
+							<image mode="scaleToFill" src="{{item.thumb}}"></image>
+						</view>
+						<view class="box">
+							<view class="title" wx:if="{{item.title}}">{{item.title}}</view>
+							<view class="line" wx:if="{{item.company}}">{{item.company}} {{item.position}}</view>
+							<view class="line" wx:if="{{item.investment}}">投资领域：{{item.investment}}</view>
+						</view>
+					</navigator>
+				</view>
+
+				<view class="vpeople-item" wx:for="{{data}}" wx:for-index="idx" wx:for-item="item" wx:if="{{item.modelid==19 && currentModel==19}}">
+					<navigator url="/pages/show_vp/show_vp?id={{item.id}}">
+						<view class="thumb">
+							<image mode="scaleToFill" src="{{item.thumb}}"></image>
+						</view>
+						<view class="box">
+							<view class="title" wx:if="{{item.title}}">{{item.title}}</view>
+							<view class="line" wx:if="{{item.company}}">{{item.company}} {{item.position}}</view>
+							<view class="stage" wx:if="{{item.industryid}}">{{item.industryid}}</view>
+						</view>
+					</navigator>
+				</view>
+			</view>
+
+			<view class="tips-t" wx:if="{{!data.length}}">
+				<image src="/img/notfind.png"></image>
+			</view>
+		</view>
+
+		<view class="hot-box" wx:if="{{!data.length && !currentModel}}">
+			<view class="hot-word" wx:for="{{hotArr}}" wx:for-index="idx" wx:for-item="item" data-word="{{item}}" bindtap="hot">
+				{{item}}
+			</view>
+		</view>
+
+    </scroll-view>
+</view>

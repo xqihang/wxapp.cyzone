@@ -1,0 +1,53 @@
+<view class="main-container">
+
+	<scroll-view class="scroll-view">
+		<view class="company-item">
+			<view class="thumb">
+				<image mode="aspectFit" src="{{data.thumb}}"></image>
+			</view>
+			<view class="box">
+				<view class="title">{{data.title}}</view>
+                <view class="line">成立时间：{{data.funddate}}</view>
+				<view class="line">投资领域：{{data.investment}}</view>
+				<view class="line">官方网站：{{data.website}}</view>
+			</view>
+		</view>
+
+        <view class="block block-desc" wx:if="{{data.content}}">
+            <view class="block-t">简介</view>
+            <view class="content">
+                <import src="/wxParse/wxParse.wxml"/>
+                <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+            </view>
+        </view>
+
+		<view class="block block-partners weui-cells" wx:if="{{data.people.length}}">
+			<view class="weui-cells__title">
+                投资团队( <text class="import">{{data.people.length}}</text>人 )
+            </view>
+            <navigator wx:for="{{data.people}}" wx:if="{{item.isShow}}" url="/pages/show_p/show_p?id={{item.id}}">
+                <view class="weui-cell">
+                    <view class="weui-cell__hd">
+                        <image src="{{item.thumb}}" style="margin-right: 10px;vertical-align: middle;width: 90rpx; height: 90rpx;"></image>
+                    </view>
+                    <view class="weui-cell__bd">{{item.title}}</view>
+                    <view class="weui-cell__ft">{{item.position}}</view>
+                </view>
+            </navigator>
+            <view wx:if="{{!allPeopleShow && data.people.length>=10}}" bindtap="showTeam" class="more">显示更多</view>
+        </view>
+
+        <view class="block" wx:if="{{data.financing.length}}">
+        	<view class="block-t">投资案例( <text class="import">{{data.casesnub}}</text>例 )</view>
+        	<import src="/tpl/case.wxml"/>
+			<template is="case" data="{{data:data.financing}}"/>
+        </view>
+
+        <view bindtap="case" class="more">加载更多</view>
+
+        <view class="copy-right">
+            <view>数据来源于：创业邦 - 创投库</view>   
+            <view>http://www.cyzone.cn</view> 
+        </view>
+    </scroll-view>
+</view>

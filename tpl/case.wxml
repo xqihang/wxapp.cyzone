@@ -1,0 +1,24 @@
+<template name="case">
+	<view class="case-item" wx:for="{{data}}">
+		<view class="thumb">
+			<image src="{{item.thumb}}"></image>
+		</view>
+		<view class="other">
+			<view class="line big">
+				{{item.title}}
+			</view>
+			<view class="line vcompany">
+				<image class="icon" src="/img/icon/icon_company.png"></image>
+				{{item.investment}}
+			</view>
+			<view class="line money">
+				<image class="icon" src="/img/icon/icon_money.png"></image>
+				{{item.money||'不明确'}}
+			</view>
+			<view class="line date">
+				<image class="icon" src="/img/icon/icon_date.png"></image>
+				{{item.evdate}}
+			</view>
+		</view>
+	</view>
+</template>

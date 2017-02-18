@@ -1,0 +1,14 @@
+<template name="vpeople">
+	<view class="vpeople-item" wx:for="{{data}}" wx:for-index="idx" wx:for-item="item">
+		<navigator url="/pages/show_vp/show_vp?id={{item.id}}">
+			<view class="thumb">
+				<image mode="aspectFill" src="{{item.thumb}}"></image>
+			</view>
+			<view class="box">
+				<view class="title" wx:if="{{item.title}}">{{item.title}}</view>
+				<view class="line" wx:if="{{item.company}}">{{item.company}} {{item.position}}</view>
+				<view class="stage" wx:if="{{item.industryid}}">{{item.industryid}}</view>
+			</view>
+		</navigator>
+	</view>
+</template>

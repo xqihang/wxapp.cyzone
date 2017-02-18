@@ -1,0 +1,56 @@
+<view class="main-container">
+
+	<scroll-view class="scroll-view">
+		<view class="company-item">
+			<view class="thumb">
+				<image mode="aspectFit" src="{{data.thumb}}"></image>
+			</view>
+			<view class="box">
+				<view class="title" wx:if="{{data.title}}">{{data.title}}</view>
+                <view class="line" wx:if="{{data.company}}">公司名称：{{data.company}}</view>
+                <view class="line" wx:if="{{data.position}}">职位：{{data.position}}</view>
+			</view>
+		</view>
+
+        <view class="block block-desc" wx:if="{{data.content}}">
+            <view class="block-t">简介</view>
+            <view class="content">
+                <import src="/wxParse/wxParse.wxml"/>
+                <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+            </view>
+        </view>
+
+        <view class="block" wx:if="{{data.education.length}}">
+            <view class="block-t">教育经历</view>
+            <view class="weui-cell" wx:for="{{data.education}}">
+                <view class="weui-cell__bd">{{item.title}}</view>
+                <view class="weui-cell__ft">{{item.position}}</view>
+            </view>
+        </view>
+
+        <view class="block" wx:if="{{data.investment || data.stage || data.amount || data.birthplace}}">
+            <view class="block-t">投资偏好</view>
+            <view class="weui-cell" wx:if="{{data.investment}}">
+                <view class="weui-cell__bd">关注领域</view>
+                <view class="weui-cell__ft">{{data.investment || '暂无'}}</view>
+            </view>
+            <view class="weui-cell" wx:if="{{data.stage}}">
+                <view class="weui-cell__bd">投资阶段</view>
+                <view class="weui-cell__ft">{{data.stage || '暂无'}}</view>
+            </view>
+            <view class="weui-cell" wx:if="{{data.amount}}">
+                <view class="weui-cell__bd">单笔投资</view>
+                <view class="weui-cell__ft">{{data.amount || '暂无'}}</view>
+            </view>
+            <view class="weui-cell" wx:if="{{data.birthplace}}">
+                <view class="weui-cell__bd">常驻城市</view>
+                <view class="weui-cell__ft">{{data.birthplace || '暂无'}}</view>
+            </view>
+        </view>
+
+        <view class="copy-right">
+            <view>数据来源于：创业邦 - 创投库</view>   
+            <view>http://www.cyzone.cn</view> 
+        </view>
+    </scroll-view>
+</view>

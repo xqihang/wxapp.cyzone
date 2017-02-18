@@ -1,0 +1,14 @@
+<template name="capital">
+	<view class="company-item" wx:for="{{data}}" wx:for-index="idx" wx:for-item="item">
+		<navigator url="/pages/showcapital/showcapital?id={{item.id}}">
+			<view class="thumb">
+				<image mode="aspectFit" src="{{item.thumb}}"></image>
+			</view>
+			<view class="box">
+				<view class="title" wx:if="{{item.title}}">{{item.title}}</view>
+				<view class="line" wx:if="{{item.website}}">官网：{{item.website}}</view>
+				<view class="line" wx:if="{{item.investment}}">投资领域：{{item.investment}}</view>
+			</view>
+		</navigator>
+	</view>
+</template>

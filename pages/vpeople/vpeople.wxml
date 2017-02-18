@@ -1,0 +1,45 @@
+<!--company.wxml-->
+<view class="main-container">
+
+	<view class="dropdown">
+		<view class="menu">
+			<view class="item {{item.active?'active':''}}" wx:for="{{dropdown}}" wx:for-index="idx" data-index="{{idx}}" catchtap="changeMenu">
+				{{item.name}}
+				<image class="down-icon {{item.active?'active':''}}" data-index="{{idx}}" catchtap="changeMenu" src="/img/down.png"></image>
+			</view>
+		</view>
+
+		<scroll-view scroll-y="true" class="dropdown-list" wx:if="{{showDropList}}">
+
+			<radio-group data-field="{{dropdown[currentIndex].field}}" bindchange="changeSubMenu">
+                <label class="weui-cell weui-check__label" wx:for="{{dropdown[currentIndex].data}}" wx:key="{{item.value}}">
+                    <radio class="weui-check" value="{{item.id}}" checked="{{item.checked}}"/>
+
+                    <view class="weui-cell__bd">{{item.name}}</view>
+                    <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+                        <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                    </view>
+                </label>
+            </radio-group>
+		</scroll-view>
+		<view class="weui-flex btn-box" wx:if="{{showDropList}}">
+            <view class="weui-flex__item">
+				<button size="mini" class="weui-btn" data-type="reset" data-field="{{dropdown[currentIndex].field}}" bindtap="query" type="default">重置条件</button>
+            </view>
+            <view class="weui-flex__item">
+            	<button size="mini" class="weui-btn" data-type="submit" bindtap="query" type="primary">确认筛选</button>
+            </view>
+        </view>
+	</view>
+
+	<scroll-view class="scroll-view has-dropdown white-bg {{showDropList?'no-scroll':''}}" scroll-y="{{!showDropList}}" bindscrolltolower="lower">
+
+		<import src="/tpl/vpeople.wxml"/>
+		<template is="vpeople" data="{{data:lists}}"/>
+		
+		<view class="no-result" wx:if="{{notfind}}">
+			<image src="/img/notfind.png"></image>
+		</view>
+
+	</scroll-view>
+</view>

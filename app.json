@@ -1,0 +1,31 @@
+{
+    "pages": [
+
+        "pages/index/index",
+
+        "pages/event/event",
+
+        "pages/company/company",
+        "pages/showc/showc",
+
+        "pages/capital/capital",
+        "pages/showcapital/showcapital",
+
+        "pages/people/people",
+        "pages/show_p/show_p",
+
+        "pages/vpeople/vpeople",
+        "pages/show_vp/show_vp",
+
+        "pages/search/search"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#f60",
+        "navigationBarTitleText": "创投大全",
+        "navigationBarTextStyle": "white",
+        "backgroundColor":"#f60",
+        "enablePullDownRefresh":"true"
+    },
+    "debug": true
+}

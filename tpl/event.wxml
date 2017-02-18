@@ -1,0 +1,15 @@
+<template name="event">
+	<view class="event-item" wx:for="{{data}}">
+		<navigator url="/pages/showc/showc?id={{item.id}}">
+			<view class="thumb">
+				<image mode="aspectFit" src="{{item.thumb}}"></image>
+			</view>
+			<view class="box">
+				<view class="title" wx:if="{{item.content}}">{{item.content}}</view>
+				<view class="tag" wx:if="{{item.industryid}}">{{item.industryid}}</view>
+				<view class="date" wx:if="{{item.evdate}}">{{item.evdate}}</view>
+				<!-- <view class="tag">{{item.industryid}}</view> -->
+			</view>
+		</navigator>
+	</view>
+</template>

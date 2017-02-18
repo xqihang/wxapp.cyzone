@@ -1,0 +1,24 @@
+<template name="company">
+	<view class="company-item" wx:for="{{data}}" wx:for-index="idx" wx:for-item="item">
+		<navigator url="/pages/showc/showc?id={{item.id}}">
+			<view class="thumb">
+				<image mode="aspectFit" src="{{item.thumb}}"></image>
+			</view>
+			<view class="box">
+				<view class="title" wx:if="{{item.title}}">{{item.title}}</view>
+				<view class="line" wx:if="{{item.industryid}}">{{item.industryid}}</view>
+				<view class="line">
+					<view class="city" wx:if="{{item.chinahead}}">
+						<image class="icon" src="/img/icon/address.png"></image>
+						{{item.chinahead}}
+					</view>
+					<view class="team" wx:if="{{item.companysize}}">
+						<image class="icon" src="/img/icon/user.png"></image>
+						{{item.companysize}}
+					</view>
+				</view>
+				<view class="stage" wx:if="{{item.stage}}">{{item.stage}}</view>
+			</view>
+		</navigator>
+	</view>
+</template>

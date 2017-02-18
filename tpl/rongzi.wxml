@@ -1,0 +1,19 @@
+<template name="rongzi">
+	<view class="rongzi-item" wx:for="{{data}}">
+		<view class="stage">{{item.stage}}</view>
+		<view class="other">
+			<view class="line vcompany">
+				<image class="icon" src="/img/icon/icon_company.png"></image>
+				{{item.investment || '不明确'}}
+			</view>
+			<view class="line money">
+				<image class="icon" src="/img/icon/icon_money.png"></image>
+				{{item.money||'不明确'}}
+			</view>
+			<view class="line date">
+				<image class="icon" src="/img/icon/icon_date.png"></image>
+				{{item.evdate}}
+			</view>
+		</view>
+	</view>
+</template>
